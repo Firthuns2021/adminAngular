@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <!-- Navbar -->
+  <app-navbar></app-navbar>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <app-aside></app-aside>
+
+  <!-- Content Wrapper. Contains page content -->
+<!--  esta sección la queremos hacer dinamica, y su contenido, sea manejado, mediante
+rutas, por ello que indicamos  router-outlet, y cuyas rutas las definiremos en el
+cosas a tener en cuenta:
+la rutas las hemos establecidos en el app-routing.module, y hemos indicado  a page.module
+de donde tiene que tomar las rutas
+-->
+    <router-outlet></router-outlet>
+  <!-- /.content-wrapper -->
+  <!-- footer-->
+  <app-footer></app-footer>
+  <!-- /.footer-->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
