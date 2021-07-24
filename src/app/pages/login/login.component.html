@@ -4,29 +4,34 @@
       <img src="assets/img/template/logo_light.png">
   </div>
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
-    </div>
-    <div class="card-body">
+  <div class="card ">
+     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../../index3.html" method="post">
+      <form autocomplete="off" [formGroup]="f" (ngSubmit)="login()" >
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+
+          <input type="email" formControlName="email" class="form-control" placeholder="Email"
+          [ngClass]="{'is-invalid': invalidField('email')}">
+
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
+          <div class="invalid-feedback">Please fill out this field correctly.</div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+
+          <input type="password" formControlName="password" class="form-control" placeholder="Password"
+                 [ngClass]="{'is-invalid': invalidField('password')}">
+
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          <div class="invalid-feedback">Please fill out this field correctly.</div>
         </div>
         <div class="row">
 

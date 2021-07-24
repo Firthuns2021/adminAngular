@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 // Módulos personalizados.
 
 import {PagesModule} from './pages/pages.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {PagesModule} from './pages/pages.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule
+    PagesModule,
+    HttpClientModule
 
   ],
   providers: [],
