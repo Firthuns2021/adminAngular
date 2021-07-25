@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-aside',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideComponent implements OnInit {
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
-
+/** Función de salida del sistema */
+  logout(): void {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('refreshToken');
+    this.router.navigateByUrl('/login');
+  }
 }

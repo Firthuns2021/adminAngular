@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {PagesRoutingModule} from './pages/pages-routing.module';
 
+
+
+
 const routes: Routes = [
   {  path: '', redirectTo: '', pathMatch: 'full' }
 ];
