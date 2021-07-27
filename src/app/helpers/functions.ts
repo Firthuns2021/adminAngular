@@ -19,8 +19,8 @@ export class functions{
 
 
   /*=============================================
-Función para determinar tamaños de pantalla
-=============================================*/
+  Función para determinar tamaños de pantalla
+  =============================================*/
 
   static screenSize(minWidth: number, maxWidth: number): boolean{
 

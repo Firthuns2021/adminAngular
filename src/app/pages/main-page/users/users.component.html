@@ -1,4 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -26,13 +27,11 @@
       <div class="card-header">
 
         <div [hidden]="loadData" class="row mb-2">
-
+     <!-- buscador:     -->
           <div class="col-12 col-sm-6 col-xl-3 ml-auto">
-
-<!--            <input class="form-control" placeholder="Search" (keyup)="applyFilter($event)">-->
-
+                 <input class="form-control" placeholder="Search" (keyup)="applyFilter($event)">
           </div>
-
+       <!-- ./ buscador -->
         </div>
 
       </div>
@@ -40,75 +39,40 @@
       <div class="card-body">
 
         <div class="mat-table-container">
+      <!--matSortStart="desc" -> el primer clic lo haga de forma descendente... -->
+          <table [hidden]="loadData" mat-table [dataSource]="dataSource"
+                 multiTemplateDataRows matSort matSortStart="desc" class="mat-elevation-z8 matTable-table">
 
-          <table [hidden]="loadData" mat-table [dataSource]="dataSource" multiTemplateDataRows matSort matSortStart="desc" class="mat-elevation-z8 matTable-table">
-
-            <!-- Position Column -->
+            <!-- Position Column   sorting -->
             <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
               <td mat-cell *matCellDef="let element"> {{element.position}} </td>
             </ng-container>
-
-            <!-- Display Name Column -->
+            <!-- Email Column    sorting -->
             <ng-container *ngIf="!screenSizeSM" matColumnDef="displayName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Display Name </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Display name</th>
               <td mat-cell *matCellDef="let element"> {{element.displayName}} </td>
             </ng-container>
-
-            <!-- username Column -->
+            <!-- Actions Column -->
+            <!-- Email Column    sorting -->
             <ng-container *ngIf="!screenSizeSM" matColumnDef="username">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> username</th>
               <td mat-cell *matCellDef="let element"> {{element.username}} </td>
             </ng-container>
+            <!-- Actions Column -->
 
-            <!-- Email Column -->
+
+
+            <!-- Email Column    sorting -->
             <ng-container matColumnDef="email">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
               <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
-
-<!--            &lt;!&ndash; Picture Column &ndash;&gt;-->
-<!--            <ng-container matColumnDef="picture">-->
-<!--              <th mat-header-cell *matHeaderCellDef mat-sort-header> Picture </th>-->
-<!--              <td mat-cell *matCellDef="let element"> {{element.picture}} </td>-->
-<!--            </ng-container>-->
-
-<!--            &lt;!&ndash; Method Column &ndash;&gt;-->
-<!--            <ng-container matColumnDef="method">-->
-<!--              <th mat-header-cell *matHeaderCellDef mat-sort-header> Method </th>-->
-<!--              <td mat-cell *matCellDef="let element"> {{element.method}} </td>-->
-<!--            </ng-container>-->
-
-<!--            &lt;!&ndash; Country Column &ndash;&gt;-->
-<!--            <ng-container matColumnDef="country">-->
-<!--              <th mat-header-cell *matHeaderCellDef mat-sort-header> country </th>-->
-<!--              <td mat-cell *matCellDef="let element"> {{element.country}} </td>-->
-<!--            </ng-container>-->
-<!--            &lt;!&ndash; city Column &ndash;&gt;-->
-<!--            <ng-container matColumnDef="city">-->
-<!--              <th mat-header-cell *matHeaderCellDef mat-sort-header> city </th>-->
-<!--              <td mat-cell *matCellDef="let element"> {{element.city}} </td>-->
-<!--            </ng-container>-->
-
-<!--            &lt;!&ndash; address Column &ndash;&gt;-->
-<!--            <ng-container matColumnDef="address">-->
-<!--              <th mat-header-cell *matHeaderCellDef mat-sort-header> address </th>-->
-<!--              <td mat-cell *matCellDef="let element"> {{element.address}} </td>-->
-<!--            </ng-container>-->
-
-
-<!--            &lt;!&ndash; phone Column &ndash;&gt;-->
-<!--            <ng-container matColumnDef="phone">-->
-<!--              <th mat-header-cell *matHeaderCellDef mat-sort-header> phone </th>-->
-<!--              <td mat-cell *matCellDef="let element"> {{element.phone}} </td>-->
-<!--            </ng-container>-->
-
-
             <!-- Actions Column -->
             <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <th mat-header-cell *matHeaderCellDef> Actions</th>
               <td mat-cell *matCellDef="let element">
-
+                <!--  con la acción clic lo que se prende es realizar la expansión de la linea.... -->
                 <button
                   class="btn btn-sm btn-warning mr-2"
                   (click)="expandedElement = expandedElement === element ? null : element">
@@ -136,12 +100,15 @@
                       <div *ngIf="element.method == 'google' || element.method == 'facebook'">
                         <img src="{{element.picture}}" class="rounded-circle" width="100">
                       </div>
+<!--  C:\ANGULAR_firebase\S4_SistemaAdministrativo\adminAngular\src\assets\img\users\juanito\1614.png                    -->
                       <div *ngIf="element.method == 'direct'">
-                        <div *ngIf="element.picture == undefined">
-<!--                          <img src="{{path}}users/default/default.png" class="rounded-circle" width="100">-->
+                        <div *ngIf="element.picture == '' || element.picture == undefined">
+                              <img src="{{path}}users/default/default.png" class="rounded-circle" width="100">
+
                         </div>
                         <div *ngIf="element.picture != undefined">
-<!--                          <img src="{{path}}users/{{element.username}}/{{element.picture}}" class="rounded-circle" width="100">-->
+                              <img src="{{path}}/users/{{element.username}}/{{element.picture}}" class="rounded-circle" width="100">
+
                         </div>
                       </div>
                     </li>
@@ -157,6 +124,7 @@
                       <strong class="mat-header-cell">Country:</strong>
                       {{element.country}}
                     </li>
+
 
                     <li class="py-2">
                       <span class="mx-2 text-muted">·</span>
@@ -178,7 +146,7 @@
                     <li class="py-2">
                       <span class="mx-2 text-muted">·</span>
                       <strong class="mat-header-cell">Wishlist:</strong>
-<!--                      {{element.wishlist | jsonToString }}-->
+                                            {{element.wishlist | jsonToString }}
                     </li>
 
                     <li class="py-2">
@@ -193,7 +161,7 @@
                 </div>
               </td>
             </ng-container>
-
+            <!-- ./.. Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let element; columns: displayedColumns;"
@@ -206,21 +174,21 @@
             <tr class="mat-row" *matNoDataRow>
               <td class="mat-cell text-center" [attr.colspan]="displayedColumns.length">No data matching the filter</td>
             </tr>
-
+            <!-- [attr.colspan]="displayedColumns.length" - se adapta al ancho de las columnas.   -->
           </table>
-
+        <!-- spinner -->
           <div *ngIf="loadData" class="text-center m-5">
 
-            <div class="spinner-border"></div>
+            <div    class="spinner-border"></div>
 
           </div>
-
+          <!--spinner  -->
 
         </div>
 
       </div>
 
-      <!-- /.card-body -->
+      <!-- /.card-body                        -->
       <div class="card-footer bg-white">
         <mat-paginator [hidden]="loadData" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
       </div>

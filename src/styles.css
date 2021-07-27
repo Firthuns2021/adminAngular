@@ -6,3 +6,68 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .matTable-table{
   width: 100%;
 }
+.mat-table-container{
+  position:  relative;
+  /*max-height: 400px;*/
+  overflow: auto;
+}
+/*Table with expandable rows*/
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0 !important;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0 !important;
+}
+
+.example-element-detail {
+  overflow: hidden !important;
+  display: flex !important;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+/* la siguiente configuración me hace, que cuando la pantalla sea pequeña, la info contenida
+en la línea sea mas corta, y finalice en tres puntos...*/
+td.mat-cell{
+  max-width: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis ;
+  overflow: hidden;
+}
+/* Table with sorting --- https://material.angular.io/components/table/overview  */
+th.mat-sort-header-sorted {
+  color: black;
+}

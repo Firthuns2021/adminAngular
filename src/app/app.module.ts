@@ -11,19 +11,24 @@ import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PagesModule,
-    HttpClientModule,
-    BrowserAnimationsModule
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+@NgModule({
+    declarations: [
+        AppComponent
+
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        PagesModule,
+        HttpClientModule,
+        BrowserAnimationsModule
+
+    ],
+    providers: [],
+    exports: [
+
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

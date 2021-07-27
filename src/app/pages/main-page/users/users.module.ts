@@ -10,8 +10,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 
+
 // pipes
-// import { PipesModule } from '../../../pipes/pipes.module';
+import {PipesModule} from '../../../pipes/pipes.module';
 
 @NgModule({
   declarations: [UsersComponent],
@@ -20,7 +21,9 @@ import {MatSortModule} from '@angular/material/sort';
     UsersRoutingModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    PipesModule
+
 
   ]
 })
