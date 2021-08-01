@@ -28,10 +28,10 @@ export class NewCategoriesComponent implements OnInit {
   // Creamos grupo de controles
   // =============================================*/
 
-  // public f = this.form.group({
-  //
-  //   icon: ['', Validators.required],
-  //   image: ['', Validators.required],
+  public f = this.form.group({
+
+    icon: ['', Validators.required],
+    image: ['', Validators.required],
   //
   //   name: ['', {
   //     validators: [Validators.required, Validators.pattern('[,\\a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')],
@@ -40,7 +40,7 @@ export class NewCategoriesComponent implements OnInit {
   //   }],
   //   titleList: [[], [Validators.required, Validators.pattern('["\\[\\]\\-\\,\\0-9a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')]]
   //
-  // });
+  });
 
   /*=============================================
 Validación personalizada
@@ -157,6 +157,8 @@ Validación personalizada
   // =============================================*/
   //
   saveCategory(): any {
+
+    console.log( this.f);
 
     this.loadData = true;
 

@@ -8,8 +8,8 @@
         <button type="button" class="close" mat-dialog-close >&times;</button>
 
     </div>
-<!--    [formGroup]="f"(ngSubmit)="saveCategory()">-->
-    <form  	autocomplete="off"	   	>
+
+    <form  	autocomplete="off"	  [formGroup]="f" (ngSubmit)="saveCategory()"   	>
 
 	    <div class="card-body">
 
