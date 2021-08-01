@@ -9,6 +9,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {PagesModule} from './pages/pages.module';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from './material/material.module';
+
 
 
 
@@ -22,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         AppRoutingModule,
         PagesModule,
         HttpClientModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MaterialModule
 
     ],
     providers: [],

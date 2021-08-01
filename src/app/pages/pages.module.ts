@@ -8,6 +8,7 @@ import {AppRoutingModule} from '../app-routing.module';
 // Modulos Personalizados
 import {SharedModule} from '../shared/shared.module';
 import { Error404Component } from './main-page/error404/error404.component';
+import {MaterialModule} from '../material/material.module';
 
 
 
@@ -20,7 +21,9 @@ import { Error404Component } from './main-page/error404/error404.component';
   imports: [
     CommonModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ]
+
 })
 export class PagesModule { }
