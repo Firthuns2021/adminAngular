@@ -8,8 +8,8 @@
         <button type="button" class="close" mat-dialog-close >&times;</button>
 
     </div>
-
-    <form  	autocomplete="off"	[formGroup]="f"   	(ngSubmit)="saveCategory()">
+<!--    [formGroup]="f"(ngSubmit)="saveCategory()">-->
+    <form  	autocomplete="off"	   	>
 
 	    <div class="card-body">
 
@@ -63,8 +63,8 @@
 
                         <span class="invalid-feedback"> Please provide a image</span>
 
-                		<label class="custom-file-label" for="customFile" *ngIf="!image.value">Choose Image</label>
-                        <label class="custom-file-label" for="customFile" *ngIf="image.value">{{image.value}}</label>
+<!--                		<label class="custom-file-label" for="customFile" *ngIf="!image.value">Choose Image</label>-->
+<!--                        <label class="custom-file-label" for="customFile" *ngIf="image.value">{{image.value}}</label>-->
 
                         <small class="mt-2">170px * 170px size | jpg or png format</small>
 
@@ -81,9 +81,9 @@
                           formControlName="name">
 <!--                	[ngClass]="{'is-invalid': invalidField('name') || name.invalid && name.errors?.pattern || name.invalid && name.errors?.category }">-->
 
-                	  <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.required">Please provide a name</span>
-                    <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.pattern">Please write the name correctly</span>
-                    <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.category">The category already exists</span>
+<!--                	  <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.required">Please provide a name</span>-->
+<!--                    <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.pattern">Please write the name correctly</span>-->
+<!--                    <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.category">The category already exists</span>-->
 
                 </div>
 
@@ -124,9 +124,9 @@
 
                     </div>
 
-                    <span *ngIf="titleList.invalid && titleList.errors?.required" class="invalid-feedback">Please provide a Title List</span>
+<!--                    <span *ngIf="titleList.invalid && titleList.errors?.required" class="invalid-feedback">Please provide a Title List</span>-->
 
-                    <span *ngIf="titleList.invalid && titleList.errors?.pattern" class="invalid-feedback">Write the Title List correctly</span>
+<!--                    <span *ngIf="titleList.invalid && titleList.errors?.pattern" class="invalid-feedback">Write the Title List correctly</span>-->
 
                 </div>
 

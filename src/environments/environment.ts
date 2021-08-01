@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
-  urlFirebase: '',
-  urlLogin: '',
-  urlGetuser: '',
-  urlFiles: ''
+  urlFirebase: 'https://tiendas-cb2ff-default-rtdb.europe-west1.firebasedatabase.app/',
+  urlLogin: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
+  urlGetuser: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
+  urlFiles: 'http://localhost/sistemas-angular/marketplace/src/assets/img/',
+  adminFiles: 'src/assets/imagePHP/index.php?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
+  deleteFiles: 'src/assets/imagePHP/delete.php?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
+  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc]'
 };
 // C:\ANGULAR_firebase\S4_SistemaAdministrativo\adminAngular\src\assets\img\users\juanito\1614.png
 /*

@@ -28,39 +28,39 @@ export class NewCategoriesComponent implements OnInit {
   // Creamos grupo de controles
   // =============================================*/
 
-  public f = this.form.group({
-
-    icon: ['', Validators.required],
-    image: ['', Validators.required],
-
-    name: ['', {
-      validators: [Validators.required, Validators.pattern('[,\\a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')],
-      // asyncValidators: [this.isRepeatCategory()],
-      updateOn: 'blur'
-    }],
-    titleList: [[], [Validators.required, Validators.pattern('["\\[\\]\\-\\,\\0-9a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')]]
-
-  });
+  // public f = this.form.group({
+  //
+  //   icon: ['', Validators.required],
+  //   image: ['', Validators.required],
+  //
+  //   name: ['', {
+  //     validators: [Validators.required, Validators.pattern('[,\\a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')],
+  //     asyncValidators: [this.isRepeatCategory()],
+  //     updateOn: 'blur'
+  //   }],
+  //   titleList: [[], [Validators.required, Validators.pattern('["\\[\\]\\-\\,\\0-9a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')]]
+  //
+  // });
 
   /*=============================================
 Validación personalizada
 =============================================*/
 
-  get name() {
-    return this.f.controls.name;
-  }
-
-  get image() {
-    return this.f.controls.image;
-  }
-
-  get titleList() {
-    return this.f.controls.titleList;
-  }
-
-  get icon() {
-    return this.f.controls.icon;
-  }
+  // get name() {
+  //   return this.f.controls.name;
+  // }
+  //
+  // get image() {
+  //   return this.f.controls.image;
+  // }
+  //
+  // get titleList() {
+  //   return this.f.controls.titleList;
+  // }
+  //
+  // get icon() {
+  //   return this.f.controls.icon;
+  // }
 
 // /*=============================================
 // Variable que valida el envío del formulario
