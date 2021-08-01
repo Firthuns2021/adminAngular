@@ -102,12 +102,12 @@
                       </div>
 <!--  C:\ANGULAR_firebase\S4_SistemaAdministrativo\adminAngular\src\assets\img\users\juanito\1614.png                    -->
                       <div *ngIf="element.method == 'direct'">
-                        <div *ngIf="element.picture == '' || element.picture == undefined">
+                        <div *ngIf="element.picture == undefined">
                               <img src="{{path}}users/default/default.png" class="rounded-circle" width="100">
 
                         </div>
                         <div *ngIf="element.picture != undefined">
-                              <img src="{{path}}/users/{{element.username}}/{{element.picture}}" class="rounded-circle" width="100">
+                              <img src="{{path}}/users/{{ element.username}}/{{ element.picture}}" class="rounded-circle" width="100">
 
                         </div>
                       </div>
@@ -116,13 +116,13 @@
                     <li class="py-2" *ngIf="screenSizeSM">
                       <span class="mx-2 text-muted">·</span>
                       <strong class="mat-header-cell">Username:</strong>
-                      {{element.username}}
+                      {{ element.username}}
                     </li>
 
                     <li class="py-2">
                       <span class="mx-2 text-muted">·</span>
                       <strong class="mat-header-cell">Country:</strong>
-                      {{element.country}}
+                      {{ element.country}}
                     </li>
 
 

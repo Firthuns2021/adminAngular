@@ -1,1 +1,145 @@
-<p>edit-categories works!</p>
+<mat-dialog-content>
+
+  <div class="card card-warning">
+
+    <div class="card-header">
+
+    	<h2 class="card-title mb-0">Edit Category</h2>
+        <button type="button" class="close" mat-dialog-close >&times;</button>
+
+    </div>
+
+    <form>
+<!--    	autocomplete="off"-->
+<!--      	[formGroup]="f"-->
+<!--      	(ngSubmit)="editCategory()">-->
+
+<!--	    <div class="card-body">-->
+
+<!--            <ng-container *ngIf="!loadData">-->
+<!--	    	-->
+<!--    	    	&lt;!&ndash; Icon &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                	-->
+<!--&lt;!&ndash;                	<label for="InputIcon">Icon (<a href="https://linearicons.com/free" target="_blank">Available icons</a>)</label>&ndash;&gt;-->
+
+<!--                    <div class="input-group">-->
+
+<!--&lt;!&ndash;                    	<input &ndash;&gt;-->
+<!--&lt;!&ndash;                    	type="text" &ndash;&gt;-->
+<!--&lt;!&ndash;                    	id="InputIcon"&ndash;&gt;-->
+<!--&lt;!&ndash;                    	class="form-control" &ndash;&gt;-->
+<!--&lt;!&ndash;                    	placeholder="Icon"&ndash;&gt;-->
+<!--&lt;!&ndash;                    	formControlName="icon"&ndash;&gt;-->
+<!--&lt;!&ndash;                    	[ngClass]="{'is-invalid': invalidField('icon')}"&ndash;&gt;-->
+<!--&lt;!&ndash;                        (change)="viewIcon($event)">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        <div class="input-group-append">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="input-group-text">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div [innerHTML]="iconView"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+
+<!--                    </div>-->
+
+<!--                	<span class="invalid-feedback">Please provide a icon</span>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Image &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                	-->
+<!--&lt;!&ndash;                	<label for="customFile">&ndash;&gt;-->
+<!--&lt;!&ndash;                		<img *ngIf="!imgTemp" src="../../../../../assets/img/categories/170x170.jpg" class="img-fluid">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img *ngIf="imgTemp" [src]="imgTemp" class="img-fluid">&ndash;&gt;-->
+<!--&lt;!&ndash;                	</label>&ndash;&gt;-->
+
+<!--                	<div class="custom-file">-->
+
+<!--&lt;!&ndash;                		<input &ndash;&gt;-->
+<!--&lt;!&ndash;                        type="file" &ndash;&gt;-->
+<!--&lt;!&ndash;                        class="custom-file-input" &ndash;&gt;-->
+<!--&lt;!&ndash;                        id="customFile" &ndash;&gt;-->
+<!--&lt;!&ndash;                        formControlName="image"&ndash;&gt;-->
+<!--&lt;!&ndash;                        [ngClass]="{'is-invalid': invalidField('image')}"&ndash;&gt;-->
+<!--&lt;!&ndash;                        (change)="validateImage($event)">&ndash;&gt;-->
+
+
+<!--                        <span class="invalid-feedback"> Please provide a image</span>-->
+
+<!--&lt;!&ndash;                		<label class="custom-file-label" for="customFile" *ngIf="!image.value">Choose Image</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="custom-file-label" for="customFile" *ngIf="image.value">{{image.value}}</label>&ndash;&gt;-->
+
+<!--                        <small class="mt-2">170px * 170px size | jpg or png format</small>-->
+
+<!--                	</div>-->
+<!--    	-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Name &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                 	-->
+<!--&lt;!&ndash;                	<label for="InputName">Name</label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                	<input &ndash;&gt;-->
+<!--&lt;!&ndash;                	type="text" &ndash;&gt;-->
+<!--&lt;!&ndash;                	id="InputName" &ndash;&gt;-->
+<!--&lt;!&ndash;                	class="form-control" &ndash;&gt;-->
+<!--&lt;!&ndash;                	placeholder="Name"&ndash;&gt;-->
+<!--&lt;!&ndash;                	value="{{nameView}}"&ndash;&gt;-->
+<!--&lt;!&ndash;                	readonly&ndash;&gt;-->
+<!--&lt;!&ndash;                	>&ndash;&gt;-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Url &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                 	-->
+<!--&lt;!&ndash;                	<label for="InputUrl">Url</label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                	<input &ndash;&gt;-->
+<!--&lt;!&ndash;                	type="text" &ndash;&gt;-->
+<!--&lt;!&ndash;                	id="InputUrl" &ndash;&gt;-->
+<!--&lt;!&ndash;                	class="form-control" &ndash;&gt;-->
+<!--&lt;!&ndash;                	placeholder="Url"&ndash;&gt;-->
+<!--&lt;!&ndash;                    value="{{urlInput}}"&ndash;&gt;-->
+<!--&lt;!&ndash;                    readonly>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--                &lt;!&ndash; Title List &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                    -->
+<!--&lt;!&ndash;                   <label for="InputUrl">Title List</label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                	<input &ndash;&gt;-->
+<!--&lt;!&ndash;                	type="text" &ndash;&gt;-->
+<!--&lt;!&ndash;                	class="form-control" &ndash;&gt;-->
+<!--&lt;!&ndash;                    value="{{titleView}}"&ndash;&gt;-->
+<!--&lt;!&ndash;                    readonly>&ndash;&gt;-->
+
+<!--                </div>  	    -->
+
+<!--&lt;!&ndash;            </ng-container>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div *ngIf="loadData" class="overlay">&ndash;&gt;-->
+<!--&lt;!&ndash;                <i class="fas fa-2x fa-sync-alt fa-spin"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--        </div>-->
+
+<!--	    <div class="card-footer">-->
+<!--	    	-->
+<!--	    	-->
+<!--	    	<button mat-dialog-close class="btn btn-secondary">Close</button>-->
+<!--	    	<button  type="submit" class="btn btn-warning  float-right">Save</button>-->
+
+<!--	    </div>-->
+
+
+    </form>
+
+
+  </div>
+
+</mat-dialog-content>

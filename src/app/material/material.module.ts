@@ -10,6 +10,11 @@ import { CommonModule } from '@angular/common';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+// categories
+
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
@@ -18,11 +23,17 @@ import {MatSortModule} from '@angular/material/sort';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatIconModule
   ],
   exports: [
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatIconModule
   ]
 })
 export class MaterialModule { }
