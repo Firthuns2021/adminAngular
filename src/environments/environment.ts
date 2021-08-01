@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  urlFirebase: 'https://tiendas-cb2ff-default-rtdb.europe-west1.firebasedatabase.app/',
-  urlLogin: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
-  urlGetuser: 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
-  urlFiles: 'assets/img/'
+  urlFirebase: '',
+  urlLogin: '',
+  urlGetuser: '',
+  urlFiles: ''
 };
 // C:\ANGULAR_firebase\S4_SistemaAdministrativo\adminAngular\src\assets\img\users\juanito\1614.png
 /*
