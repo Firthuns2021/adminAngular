@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { functions } from 'src/app/helpers/functions';
 import { CategoriesService } from 'src/app/services/categories.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
-import { Icategories } from 'src/app/interface/icategories';
-// import { ImagesService } from 'src/app/services/images.service';
-import { alerts } from 'src/app/helpers/alerts';
+
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -18,28 +15,18 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class NewCategoriesComponent implements OnInit {
 
 
-  // private imagesService: ImagesService,
-  constructor(private form: FormBuilder,
-              private categoriesService: CategoriesService,
-              public dialogRef: MatDialogRef<NewCategoriesComponent>) {
-  }
-
-  // /*=============================================
-  // Creamos grupo de controles
-  // =============================================*/
+ /*=============================================
+  Creamos grupo de controles
+  =============================================*/
 
   public f = this.form.group({
 
     icon: ['', Validators.required],
     image: ['', Validators.required],
-  //
-  //   name: ['', {
-  //     validators: [Validators.required, Validators.pattern('[,\\a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')],
-  //     asyncValidators: [this.isRepeatCategory()],
-  //     updateOn: 'blur'
-  //   }],
-  //   titleList: [[], [Validators.required, Validators.pattern('["\\[\\]\\-\\,\\0-9a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')]]
-  //
+    name: ['', Validators.required],
+    url: ['', Validators.required],
+    titleList: ['', Validators.required],
+
   });
 
   /*=============================================
@@ -49,10 +36,10 @@ Validación personalizada
   // get name() {
   //   return this.f.controls.name;
   // }
-  //
-  // get image() {
-  //   return this.f.controls.image;
-  // }
+  // con el get image, tomamos la url de la imagen y lo mostraremos en el label
+  get image() {
+    return this.f.controls.image;
+  }
   //
   // get titleList() {
   //   return this.f.controls.titleList;
@@ -62,246 +49,94 @@ Validación personalizada
   //   return this.f.controls.icon;
   // }
 
-// /*=============================================
-// Variable que valida el envío del formulario
-// =============================================*/
+/*=============================================
+Variable que valida el envío del formulario
+=============================================*/
 
   formSubmitted = false;
 
-// /*=============================================
-// Variable global que almacena la imagen temporal
-// =============================================*/
+/*=============================================
+Variable global que almacena la imagen temporal
+=============================================*/
   imgTemp = '';
 
-// /*=============================================
-// Visualizar la url
-// =============================================*/
+/*=============================================
+Visualizar la url
+=============================================*/
 
   urlInput = '';
 
-// /*=============================================
-// Configuración Mat Chips: Etiquetas dentro del Input Title List
-// =============================================*/
+/*=============================================
+Configuración Mat Chips: Etiquetas dentro del Input Title List
+=============================================*/
 
   visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-
-  // 	/*=============================================
-// Visualizar el icono
-// =============================================*/
+  /*=============================================
+Visualizar el icono
+=============================================*/
   //
   iconView = '';
 
-// /*=============================================
-// Subir la imagen al servidor
-// =============================================*/
+/*=============================================
+Subir la imagen al servidor
+=============================================*/
 
   uploadFile = '';
 
-// /*=============================================
-// Variable para precarga
-// =============================================*/
+/*=============================================
+Variable para precarga
+=============================================*/
 
   loadData = false;
 
-  // 	/*=============================================
-// Adicionar Chips
-// =============================================*/
-  //
-// add(event: MatChipInputEvent): void {
-  //
-//     const input = event.input;
-  //
-//     const value = event.value;
-  //
-//     // Add our title list
-//     if ((value || '').trim()) {
-  //
-//       this.f.controls.titleList.value.push(value.trim());
-  //
-//     }
-  //
-//     // Reset the input value
-//     if (input) {
-//       input.value = '';
-//     }
-  //
-//     this.f.controls.titleList.updateValueAndValidity();
-  //
-  // 	}
-  //
-  // 	/*=============================================
-  // Remover Chips
-  // =============================================*/
-  //
-  // remove(title: any): void {
-  //     const index =  this.f.controls.titleList.value.indexOf(title);
-  //
-  //     if (index >= 0) {
-  //        this.f.controls.titleList.value.splice(index, 1);
-  //
-  //     }
-  //
-  //     this.f.controls.titleList.updateValueAndValidity();
-  // 	}
-  //
-  ngOnInit(): void {
-  }
+  // private imagesService: ImagesService,
+  constructor(private form: FormBuilder,
+              private categoriesService: CategoriesService,
+              public dialogRef: MatDialogRef<NewCategoriesComponent>) { }
 
-  //
-  // /*=============================================
-  // Función Save Category
-  // =============================================*/
-  //
+
+  ngOnInit(): void {  }
+
+
+  /*=============================================
+  Función Save Category
+  =============================================*/
+
   saveCategory(): any {
 
-    console.log( this.f);
+    console.log(this.f);
 
-    this.loadData = true;
+    // this.loadData = true;
 
-    // 	/*=============================================
-    // 	Validamos que el formulario haya sido enviado
-    // 	=============================================*/
+     /*=============================================
+    	Validamos que el formulario haya sido enviado
+    	=============================================*/
 
-    // 	this.formSubmitted = true;
-    //
-    // // 	/*=============================================
-    // // 	Validamos que el formulario esté correcto
-    // // 	=============================================*/
-    //
-    // 	if ( this.f.invalid){
-    // 		return;
-    // 	}
+    this.formSubmitted = true;
 
-    // 	/*=============================================
-    //  		Subir imagen al servidor
-    //   	=============================================*/
-    //
-    // this.imagesService.uploadImage(this.uploadFile, 'categories', '', 170, 170, null).subscribe((resp: any) => {
-    //
-    //   		if ( resp.status === 200){
-    //
-    //   			/*=============================================
-    // 			Capturamos la información del formulario en la interfaz
-    // 			=============================================*/
-    //
-    // 			const dataCategory: Icategories = {
-    //
-    // 				icon: this.f.controls.icon.value.split('"')[1],
-    // 				image: resp.result,
-    // 				name: this.f.controls.name.value,
-    // 				title_list: JSON.stringify(this.f.controls.titleList.value),
-    // 				url: this.urlInput,
-    // 				view: 0,
-    // 				state: 'hidden'
-    //
-    // 			};
-    //
-    // 			/*=============================================
-    // 			Guardar en base de datos la info de la categoría
-    // 			=============================================*/
-    //
-    // 			this.categoriesService.postData(dataCategory).subscribe(
-    //
-    // 				resp => {
-    //
-    // 					this.loadData = false;
-    //
-    // 					this.dialogRef.close('save');
-    //
-    // 					alerts.basicAlert('Ok', 'The category has been saved', 'success');
-    //
-    // 				},
-    //
-    // 				err => {
-    //
-    // 					this.loadData = false;
-    //
-    // 					alerts.basicAlert('Error', 'Category saving error', 'error');
-    //
-    // 				}
-    //
-    // 			);
-    //
-    //   		}else{
-    //
-    // 			this.loadData = false;
-    //
-    //   alerts.basicAlert('Error', 'Invalid Picture', 'error');
-    //   		}
-    //
-    //   	});
-    //
-    // }
-    //
-    // /*=============================================
-    // Validamos formulario
-    // =============================================*/
-    // invalidField(field: string): any{
-    //   return functions.invalidField(field, this.f, this.formSubmitted);
-    // }
-    // /*=============================================
-    // Validamos imagen
-    // =============================================*/
-    //   validateImage(e: any): any{
-    //   functions.validateImage(e).then((resp: any) => {
-    //   this.imgTemp = resp;
-    //   this.uploadFile = e;
-    //  });
-    // }
-    //
-    // /*=============================================
-    // Validar que el nombre de categoría no se repita
-    // =============================================*/
-    //
-    // isRepeatCategory(){
-    //
-    // 	return(control: AbstractControl ) => {
-    //
-    // 		const name = functions.createUrl(control.value);
-    //
-    // 		return new Promise((resolve) => {
-    //
-    // 			this.categoriesService.getFilterData('url', name).subscribe(
-    //
-    // 				resp => {
-    //
-    // 					if (Object.keys(resp).length > 0){
-    //
-    // 						resolve({category: true}) ;
-    //
-    // 					}else{
-    // 						this.urlInput = name;
-    // 					}
-    //
-    //
-    // 				}
-    //
-    // 			);
-    //
-    //
-    // 		});
-    //
-    //
-    // 	};
-    //
-    //
-    // }
-    //
-    // /*=============================================
-    // Visualizar el Icono
-    // =============================================*/
-    //
-    // viewIcon(e: any){
-    //
-    // 	this.iconView = e.target.value;
-    //
-    // 	e.target.value = this.f.controls.icon.value.split('"')[1];
-    //
-    // }
+    /*=============================================
+    	Validamos que el formulario esté correcto
+    	=============================================*/
 
+    // if (this.f.invalid) { return;  }
+  }
+  /*=============================================
+Validamos formulario
+=============================================*/
+    invalidField( field: string): any {
+    return functions.invalidField( field, this.f, this.formSubmitted);
+  }
+  /*=============================================
+Validamos imagen
+=============================================*/
+
+  validateImage(e: any): any {
+      functions.validateImage(e).then( (resp: any) => {
+        this.imgTemp = resp;
+      });
   }
 }

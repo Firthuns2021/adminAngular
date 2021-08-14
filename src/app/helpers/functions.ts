@@ -38,7 +38,8 @@ export class functions{
 
 
   /*=============================================
-Función para validar la imagen
+Función para validar la imagen.
+ Imagen se encuentra en codificación base 64
 =============================================*/
 
   static validateImage(e: any): any{
@@ -46,23 +47,17 @@ Función para validar la imagen
     return new Promise(resolve => {
 
       const image = e.target.files[0];
-
-      /*=============================================
-        Validamos el formato
-        =============================================*/
-      // if(image["type"] !== "image/jpeg" && image["type"] !== "image/png"){
-      if ( image.type !== 'image/jpeg' && image.type !== 'image/png'){
-
+/*=============================================
+    Validamos el formato
+=============================================*/
+      if (image['type'] !== 'image/jpeg' && image['type'] !== 'image/png'){
+      // if ( image.type !== 'image/jpeg' && image.type !== 'image/png'){
         alerts.basicAlert('error', 'The image must be in JPG or PNG format', 'error');
-
         return;
-
       }
-
       /*=============================================
       Validamos el tamaño
       =============================================*/
-
       else if (image.size > 2000000){
 
         alerts.basicAlert('error', 'Image must not weigh more than 2MB', 'error');
@@ -78,7 +73,7 @@ Función para validar la imagen
       else{
 
         const data = new FileReader();
-        data.readAsDataURL(image);
+        data.readAsDataURL(image); // leer el archivo como una url
 
         data.onloadend = () => {
 
