@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { functions } from 'src/app/helpers/functions';
 import { CategoriesService } from 'src/app/services/categories.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -23,7 +23,11 @@ export class NewCategoriesComponent implements OnInit {
 
     icon: ['', Validators.required],
     image: ['', Validators.required],
-    name: ['', Validators.required],
+    // name: ['', [Validators.required, Validators.pattern('[a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')] ],
+    name: ['',  {Validators: [ Validators.required,
+                               Validators.pattern('[,\\a-zA-ZáéíóúñÁÉÍÓÚÑ ]*')  ],
+                               asyncValidators: [ this.isRepeatCategory() ],
+                               updateOn: 'blur' } ],
     url: ['', Validators.required],
     titleList: ['', Validators.required],
 
@@ -32,11 +36,10 @@ export class NewCategoriesComponent implements OnInit {
   /*=============================================
 Validación personalizada
 =============================================*/
+  get name(){ return this.f.controls.name; }
 
-  // get name() {
-  //   return this.f.controls.name;
-  // }
   // con el get image, tomamos la url de la imagen y lo mostraremos en el label
+
   get image() {
     return this.f.controls.image;
   }
@@ -121,8 +124,8 @@ Variable para precarga
     /*=============================================
     	Validamos que el formulario esté correcto
     	=============================================*/
-
-    // if (this.f.invalid) { return;  }
+    console.log('this.f', this.f);
+    if (this.f.invalid) { return;  }
   }
   /*=============================================
 Validamos formulario
@@ -138,5 +141,27 @@ Validamos imagen
       functions.validateImage(e).then( (resp: any) => {
         this.imgTemp = resp;
       });
+  }
+  /*=============================================
+Validamos  que el nombre de categoría no se repita
+=============================================*/
+
+  isRepeatCategory(): any {
+    return(control: AbstractControl) => {
+        const name = control.value;
+
+        return new Promise( (resolve) => {
+            this.categoriesService.getFilterData( 'name' , name ).subscribe(
+              (resp: any) => {
+                if ( Object.keys(resp).length > 0){
+                  resolve( { category: true });
+                }else {
+                  resolve( { category: false });
+                }
+              }
+            );
+        });
+
+    };
   }
 }
