@@ -19,7 +19,7 @@
                 <div class="form-group"> (<a href="https://linearicons.com/free"  target="_blank">Available icons</a>)
                 	<label for="InputIcon">Icon </label>
 
-                    <div class="input-group">
+                 <div class="input-group">
 
                       <input
                         type="text"
@@ -27,15 +27,22 @@
                         class="form-control"
                         placeholder="Icon"
                         formControlName="icon"
+                      	[ngClass]="{'is-invalid': invalidField('icon')}"
+                        (change)="viewIcon($event)">
 
-                    	[ngClass]="{'is-invalid': invalidField('icon')}">
-                      <span class="invalid-feedback">Please provide a icon</span>
-                    </div>
+                   <div class="input-group-append">
+                     <div class="input-group-text">
+                <!-- la siguiente istrucción me sacara el icono por pantalla        -->
+                       <div [innerHTML]="iconView"></div>
+                     </div>
+                   </div>
+
+                 </div>
 
 
 
                 </div>
-
+              <!-- ********************* ./ Icon *********************  -->
             <!-- ********************* Image *********************  -->
                 <div class="form-group">
 
@@ -76,6 +83,7 @@
                           [ngClass]="{'is-invalid': invalidField('name') ||
                                                     name.invalid && name.errors?.pattern ||
                                                     name.invalid && name.errors?.category }">
+
                   <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.required"> Please provide a name</span>
                   <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.pattern"> Please write the name correctly</span>
                   <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.category">The category already exists</span>
@@ -86,33 +94,43 @@
 
                 	<label for="InputUrl">Url</label>
 
-                  <input
-                    type="text"
-                    id="InputUrl"
-                    class="form-control"
-                    placeholder="Url"
-                         [ngClass]="{'is-invalid': invalidField('url')}">
 
-                  <span class="invalid-feedback"> Please provide a url</span>
+                    <input
+                      type="text"
+                      id="InputUrl"
+                      class="form-control"
+                      placeholder="Url"
+                      value="{{urlInput}}"
+                      readonly>
+                    <!-- readonly=> quiere decir que ya no se encuentra dentro del grupo de controles en el lado del typeScript-->
+
+
+
                 </div>
 
                 <!-- *********************  Title List *********************  -->
-                <div class="form-group">
-
-                    <label for="InputTitleList">Title List</label>
-
-                    <input
-                      class="form-control"
-                      type="text"
-                      id="InputTitleList"
-                      placeholder="Title list"
-                      formControlName="titleList"
-                    [ngClass]="{'is-invalid': invalidField('titleList')}">
-
-                  <span class="invalid-feedback"> Please provide a titleList</span>
-
+              <div class="form-group">
+                <label>Title List</label>
+                <div class="form-control"   [ngClass]="{'is-invalid': invalidField('titleList')}">
+                      <mat-chip-list #chipList aria-label="Title List">
+                        <mat-chip *ngFor="let t of titleList.value" [selectable]="selectable"
+                                  [removable]="removable" (removed)="remove(t)">
+                          {{t}}
+                          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input placeholder="New title..."
+                               [matChipInputFor]="chipList"
+                               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                               [matChipInputAddOnBlur]="addOnBlur"
+                               (matChipInputTokenEnd)="add($event)">
+                      </mat-chip-list>
                 </div>
+                <span *ngIf="titleList.invalid && titleList.errors?.required" class="invalid-feedback">Please provide a Title List</span>
 
+                <span *ngIf="titleList.invalid && titleList.errors?.pattern" class="invalid-feedback">Write the Title List correctly</span>
+              </div>
+
+              <!-- *********************  ./ Title List *********************  -->
             </ng-container>
 
 

@@ -15,6 +15,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSortModule,
     MatDialogModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   exports: [
     MatPaginatorModule,
@@ -33,7 +35,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSortModule,
     MatDialogModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

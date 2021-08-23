@@ -94,7 +94,7 @@ Función para validar la imagen.
   static createUrl(value: string): any{
 
     value = value.toLowerCase();
-    value = value.replace(/[ ]/g, '-');
+    value = value.replace(/[ ]/g, '-'); // me toma todos los espacios vacio y me lo convierta en espacio vacios
     value = value.replace(/[á]/g, 'a');
     value = value.replace(/[é]/g, 'e');
     value = value.replace(/[í]/g, 'i');

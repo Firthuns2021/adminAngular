@@ -14,6 +14,8 @@ import { PipesModule } from '../../../pipes/pipes.module';
 import {EditCategoriesComponent} from './edit-categories/edit-categories.component';
 import {NewCategoriesComponent} from './new-categories/new-categories.component';
 
+
+
 @NgModule({
   declarations: [CategoriesComponent, EditCategoriesComponent, NewCategoriesComponent],
   imports: [
@@ -21,7 +23,10 @@ import {NewCategoriesComponent} from './new-categories/new-categories.component'
     CategoriesRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    PipesModule
+    PipesModule,
+    MaterialModule,
+
+
   ]
 })
 export class CategoriesModule { }

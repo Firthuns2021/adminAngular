@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_GET["key"]) && $_GET["key"] == "AIzaSyD4Q9GMNb9V0eo8jswurpdcj_vHla5_GQM"){
+if(isset($_GET["key"]) && $_GET["key"] == "AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc"){
 
 	header('Access-Control-Allow-Origin: *');
 	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");

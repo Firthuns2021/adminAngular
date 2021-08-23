@@ -5,5 +5,6 @@ name: string;
 title_list: string;
 url: string;
 view: number;
-state: string;
+
 }
+// state: string;

@@ -7,11 +7,12 @@ export const environment = {
   urlFirebase: 'https://tiendas-cb2ff-default-rtdb.europe-west1.firebasedatabase.app/',
   urlLogin: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
   urlGetuser: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
-  urlFiles: 'http://localhost/sistemas-angular/marketplace/src/assets/img/',
-  adminFiles: 'src/assets/imagePHP/index.php?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
+  urlFiles: 'http://localhost/ANGULAR_firebase/S4_SistemaAdministrativo/adminAngular/src/assets/img/imagePHP/',
+  adminFiles: 'http://localhost/ANGULAR_firebase/S4_SistemaAdministrativo/adminAngular/src/assets/img/imagePHP/index.php',
   deleteFiles: 'src/assets/imagePHP/delete.php?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
   urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc]'
 };
+// C:\ANGULAR_firebase\S4_SistemaAdministrativo\adminAngular\src\assets\img\imagePHP\index.php
 // C:\ANGULAR_firebase\S4_SistemaAdministrativo\adminAngular\src\assets\img\users\juanito\1614.png
 /*
  * For easier debugging in development mode, you can import the following file
