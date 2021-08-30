@@ -13,7 +13,7 @@ export class ImagesService {
 Función para subir imagen al servidor
 =============================================*/
 
-  uploadImage( file: any, path: string, folder: string, width: number, height: number, name: any): any{
+  uploadImage( file: any, path: string, folder: string, width: number, height: number): any{
 
     const formData = new FormData();
     /* En nmuestro archivo index.php hemos definido las siguientes variables que definiran nuestra imagen*/
@@ -23,10 +23,10 @@ Función para subir imagen al servidor
     formData.append('width', width.toString());
     formData.append('height', height.toString());
 
-    if(name != null){
-
-      formData.append('name', name);
-    }
+    // if(name != null){
+    //
+    //   formData.append('name', name);
+    // }
 
     return this.http.post(environment.adminFiles, formData);
 

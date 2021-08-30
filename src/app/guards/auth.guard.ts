@@ -18,10 +18,10 @@ export class AuthGuard implements CanActivate {
     // vamos a comprobar que el token se encuentra grabado
     return new Promise( resolve => {
       // Validaos que el token si exista
-      if ( sessionStorage.getItem('token') !== null ){
+      if ( localStorage.getItem('token') !== null ){
         // validamos que el token si sea real
         const body = {
-          idToken: sessionStorage.getItem('token')
+          idToken: localStorage.getItem('token')
         };
 
         this.http.post( environment.urlGetuser, body  ).subscribe(
@@ -49,8 +49,8 @@ export class AuthGuard implements CanActivate {
   }
 
   private logout(): void {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('refreshToken');
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     this.router.navigateByUrl('/login');
   }
 }

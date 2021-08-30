@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       password: this.f.controls.password.value,
       returnSecureToken: true
     };
+    console.log('dataLogin', data);
     /** La respuesta viene en forma de promesa que la debo de obterner mediante subscribe...
      */
 
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
       } else if ( err.error.error.message === 'INVALID_PASSWORD'){
         alerts.basicAlert('Error', 'Invalid password', 'error');
       } else{
+        console.log(err.error);
         alerts.basicAlert('Error', 'An error occurred', 'error');
       }
 

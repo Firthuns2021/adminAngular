@@ -17,10 +17,10 @@ export class LoginService {
     // return 'Retornamos la data:' + JSON.stringify(data);
    return this.http.post(environment.urlLogin, data).pipe(
      map( (resp: any ) => {
-        // console.log('map', resp);
+        console.log('map', resp);
        /** Captura token y refreshtoken y lo guardamos en la sessionStorage */
-        sessionStorage.setItem('token', resp.idToken);
-        sessionStorage.setItem('refreshToken', resp.refreshToken);
+        localStorage.setItem('token', resp.idToken);
+        localStorage.setItem('refreshToken', resp.refreshToken);
      })
    );
   }

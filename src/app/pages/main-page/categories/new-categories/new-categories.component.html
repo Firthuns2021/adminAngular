@@ -5,6 +5,7 @@
     <div class="card-header">
 
     	<h2 class="card-title mb-0">New Category</h2>
+<!-- Botón que se donde nos aparece la letra x, para que el usuario pueda cerrar la ventana     -->
         <button type="button" class="close" mat-dialog-close >&times;</button>
 
     </div>
@@ -12,7 +13,7 @@
     <form  	autocomplete="off"	  [formGroup]="f" (ngSubmit)="saveCategory()"   	>
 
 	    <div class="card-body">
-
+        <!--  Etiqueta de precarga  ng-container ->        -->
             <ng-container *ngIf="!loadData">
 
     	    	<!-- ********************* Icon *********************  -->
@@ -82,11 +83,11 @@
                     formControlName="name"
                           [ngClass]="{'is-invalid': invalidField('name') ||
                                                     name.invalid && name.errors?.pattern ||
-                                                    name.invalid && name.errors?.category }">
+                                                    name.invalid && name.errors?.categories }">
 
                   <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.required"> Please provide a name</span>
                   <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.pattern"> Please write the name correctly</span>
-                  <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.category">The category already exists</span>
+                  <span class="invalid-feedback" *ngIf="name.invalid && name.errors?.categories">The category already exists</span>
                 </div>
 
                 <!-- *********************  Url  ********************* -->
@@ -133,7 +134,9 @@
               <!-- *********************  ./ Title List *********************  -->
             </ng-container>
 
-
+          <div *ngIf="loadData" class="overlay">
+                <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+          </div>
 
         </div>
 
