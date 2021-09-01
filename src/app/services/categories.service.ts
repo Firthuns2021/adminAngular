@@ -32,9 +32,9 @@ export class CategoriesService {
   Guardar información de la categoría
   =============================================*/
 
-  postData(data: Icategories, token: any ): any{
+  postData(data: Icategories): any{
 
-    return this.http.post(`${environment.urlFirebase}categories.json?auth=${token}`, data);
+    return this.http.post(`${environment.urlFirebase}categories.json`, data);
 
   }
 

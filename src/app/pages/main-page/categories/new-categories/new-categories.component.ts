@@ -172,7 +172,7 @@ Adiccionar chips
           /* *********************************************
             Guardar en base de datos la info de la categoria
             *********************************************** */
-          this.categoriesService.postData(dataCategory, localStorage.getItem('token')).subscribe(
+          this.categoriesService.postData(dataCategory).subscribe(
             // tslint:disable-next-line:no-shadowed-variable
           ( resp: any) => {
               // this.loadData = false;
