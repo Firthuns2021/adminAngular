@@ -12,7 +12,8 @@ export const environment = {
   adminFiles: 'http://localhost/ANGULAR_firebase/S4_SistemaAdministrativo/adminAngular/src/assets/img/imagePHP/index.php?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
 
   deleteFiles: 'src/assets/imagePHP/delete.php?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
-  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc'
+  urlRefreshToken: 'https://securetoken.googleapis.com/v1/token?key=AIzaSyA_CmzciMbVM_mGp1JGnQkDq7chb4W9qoc',
+  domainMP: undefined
 };
 
 // https://securetoken.googleapis.com/v1/token?key=[API_KEY]
