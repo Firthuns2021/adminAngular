@@ -7,22 +7,22 @@ import { environment } from 'src/environments/environment';
 })
 export class SalesService {
 
-  constructor(private http:HttpClient ) { }  
+  constructor(private http: HttpClient ) { }
 
   /*=============================================
   Tomar la data de la colección ventas en Firebase
   =============================================*/
 
-  getData(){
+  getData(): any {
 
     return this.http.get(`${environment.urlFirebase}sales.json`);
-  } 
+  }
 
   /*=============================================
   Tomar data filtrada de la colección ventas en Firebase
   =============================================*/
 
-  getFilterData(orderBy:string, equalTo:string){
+  getFilterData(orderBy: string, equalTo: string): any {
 
     return this.http.get(`${environment.urlFirebase}sales.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
 
@@ -32,9 +32,9 @@ export class SalesService {
   Actualizar en Firebase Database con Autenticación
   =============================================*/
 
-  patchDataAuth(id:string, value:object, idToken:any){
+  patchDataAuth(id: string, value: object, idToken: any): any {
 
-    return this.http.patch(`${environment.urlFirebase}sales/${id}.json?auth=${idToken}`,value);
+    return this.http.patch(`${environment.urlFirebase}sales/${id}.json?auth=${idToken}`, value);
 
   }
 
@@ -42,17 +42,18 @@ export class SalesService {
   Tomar data de la colección ventas por rangos de fecha
   =============================================*/
 
-  getDataByDate(startDate: string, endDate: string){
+  getDataByDate(startDate: string, endDate: string): any{
 
-     return this.http.get(`${environment.urlFirebase}sales.json?orderBy="date"&startAt="${startDate}"&endAt="${endDate}"&print=pretty`);
+     return this.http.get(`${environment.urlFirebase}sales.json?orderBy="date"&startAt=
+     "${startDate}"&endAt="${endDate}"&print=pretty`);
 
   }
 
   /*=============================================
   Tomar rangos limitados
   =============================================*/
- 
-  getLatestData(){
+
+  getLatestData(): any {
 
      return this.http.get(`${environment.urlFirebase}sales.json?orderBy="date"&limitToLast=5&print=pretty`);
 

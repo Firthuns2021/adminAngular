@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       } else if ( err.error.error.message === 'INVALID_PASSWORD'){
         alerts.basicAlert('Error', 'Invalid password', 'error');
       } else{
-        console.log(err.error);
+        // console.log(err.error);
         alerts.basicAlert('Error', 'An error occurred', 'error');
       }
 

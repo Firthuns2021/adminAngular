@@ -5,6 +5,7 @@ import {ProductsService} from '../../../services/products.service';
 import {SalesService} from '../../../services/sales.service';
 import {environment} from '../../../../environments/environment';
 import {StoresService} from '../../../services/stores.service';
+import {functions} from '../../../helpers/functions';
 
 @Component({
   selector: 'app-home',
@@ -45,13 +46,7 @@ export class HomeComponent implements OnInit {
 
   chart: any = {
     type: 'AreaChart',
-    data:  [
-      ['London', 8136000],
-      ['New York', 8538000],
-      ['Paris', 2244000],
-      ['Berlin', 3470000],
-      ['Kairo', 19500000],
-    ],
+    data:  [ ],
     columnNames: [ 'Date' ,  'Total' ],
     options: {
       colors: ['#FFC107']
@@ -65,7 +60,7 @@ export class HomeComponent implements OnInit {
   RANGOS DE FECHAS
   =============================================*/
 
-  startDate = new Date(new Date().getFullYear(), 0, 1); // Se trae todo lo del año actual
+  startDate = new Date(new Date().getFullYear(), 0, 1); // Se trae to.do lo del año actual
   endDate = new Date();
 
   /*=============================================
@@ -98,7 +93,8 @@ export class HomeComponent implements OnInit {
     this.getSales();
     this.getUsers();
     this.lastOrders();
-
+    console.log('this.startDate', functions.formatDate(  this.startDate));
+    console.log('this.endDate', this.endDate);
   }
 
 
@@ -125,7 +121,7 @@ Inventario de productos
   /*=============================================
   Inventario de tiendas
   =============================================*/
-  private getStores() {
+  private getStores(): any {
 
     this.loadStores = true;
 
@@ -138,7 +134,7 @@ Inventario de productos
       });
   }
 
-  private getSales() {
+  private getSales(): any {
     this.loadSales = true;
     // this.chart.data = [];
 
@@ -154,9 +150,61 @@ Inventario de productos
 
       });
 
+    /*=============================================
+ Filtrar ventas por fechas
+=============================================*/
+    this.salesService.getDataByDate(functions.formatDate(this.startDate), functions.formatDate(this.endDate))
+      .subscribe((resp?: any) => {
+        /*=============================================
+ Separar mes y total
+=============================================*/
+        const sales: any = [] ;
+        Object.keys(resp).map( (a, i ) => {
+
+          if ( resp[a].status === 'success'){
+            sales[i] = {
+              date: resp[a].date.substring(0, 7),
+              total: Number(resp[a].commission)
+            };
+          }
+          sales.sort( (x: { date: string | number | Date; }, y: { date: string | number | Date; } ) => new Date(x.date).getTime() > new Date(y.date).getTime())
+          console.log(sales.sort( (x: { date: string | number | Date; }, y: { date: string | number | Date; } ) => new Date(x.date).getTime() > new Date(y.date).getTime()));
+     });
+        // console.log('sales', sales);
+
+        /*=============================================
+          Sumar total en mes repetido
+=============================================*/
+     const result = sales.reduce((r: any, o: any) => ( r[o.date] ? (r[o.date].total += o.total) : (r[o.date] = {...o}), r), {});
+        // console.log('result', result);
+        /*=============================================
+      Agregar el arreglo a la data del gráfico
+      =============================================*/
+     Object.keys(result).map( (a) => {
+
+          const data = [ result[a].date, result[a].total];
+
+          this.chart.data.push(data);
+
+
+          /*=============================================
+    Sumar el total  de ventas
+    =============================================*/
+
+          this.chart.data.forEach((value: any) => {
+
+            this.totalSales += value[1];
+
+          });
+        });
+
+      });
+
+
+    this.loadSales = false;
   }
 
-  private getUsers(): any {
+  getUsers(): any {
     this.loadUsers = true;
 
     this.usersService.getData()
@@ -168,7 +216,7 @@ Inventario de productos
       });
   }
 
-     lastOrders(): any {
+  lastOrders(): any {
 
     /*=============================================
     Traer las últimas 5 ventas

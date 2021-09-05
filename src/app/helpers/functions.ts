@@ -107,7 +107,13 @@ Función para validar la imagen.
 
   }
 
+  /*=============================================
+Función para dar formato a las fechas
+	=============================================*/
+  static formatDate(date: Date): any{
 
+    return `${date.getFullYear()}-${('0' + date.getMonth() + 1).slice(-2)}-${('0' + date.getDate() + 1).slice(-2)}T00:00:00`;
+  }
 
 }
 

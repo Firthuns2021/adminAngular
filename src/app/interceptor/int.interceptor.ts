@@ -21,7 +21,7 @@ export class IntInterceptor implements HttpInterceptor {
 
 
 
-      console.log('request', request);
+      // console.log('request', request);
     // no se agrega token a las peticiones de login ni de refrescar el token
       if ( request.url === environment.urlLogin || request.url === environment.urlRefreshToken){
       return next.handle(request);
@@ -36,13 +36,13 @@ export class IntInterceptor implements HttpInterceptor {
       //
       // // Cambiamos el formato epoch por el formato tradicional de fecha
       const tokenExp: any = new Date(payload * 1000);
-      console.log('tokenExp', tokenExp);
+      // console.log('tokenExp', tokenExp);
       // // Capturamos el tiempo actual
       const now: any = new Date();
       //
       // // calculamos 15 minutos después del tiempo actual
       now.setTime(now.getTime() + (15 * 60 * 1000));
-      console.log('now', now);
+      // console.log('now', now);
 
       // // Validamos si el token está próximo a vencerse
       if ( tokenExp.getTime() < now.getTime()){
@@ -64,7 +64,7 @@ export class IntInterceptor implements HttpInterceptor {
     // el interceptor se encargará de agregar el token a nuestra peticion a la base de datos.
       return next.handle( this.cloneToken(request, this.token)).pipe(
         map( (resp: any) => {
-          console.log('respuesta pipe.map', resp);
+          // console.log('respuesta pipe.map', resp);
           return resp;
         })
       );

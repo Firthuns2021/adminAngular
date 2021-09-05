@@ -86,8 +86,8 @@
             <div class="card-header">
               <h5 class="card-title">Monthly Sales Report</h5>
 
-              <div class="card-tools">
 
+              <div class="card-tools">
 <!--                <mat-form-field appearance="fill">-->
 <!--                  <mat-label>Enter a date range</mat-label>-->
 <!--                  <mat-date-range-input [rangePicker]="picker">-->
@@ -104,7 +104,9 @@
 
             <div class="card-body text-center">
 
-              <p><strong>Sales:  -  {{startDate | date:'fullDate'}} - {{endDate | date:'fullDate'}} | Total: {{totalSales | currency }}</strong></p>
+              <p><strong>Sales:  -  {{startDate | date:'fullDate'}} -
+                                   {{endDate | date:'fullDate'}} |
+                                 Total: {{totalSales | currency }}</strong></p>
 
               <google-chart *ngIf="!loadSales && chart.data.length > 0"  style="width: 100%;"
                             [type]="chart.type"
